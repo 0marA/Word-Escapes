@@ -9,28 +9,23 @@ public class Dictionary {
 
     public Dictionary() {
         dictionary = new ArrayList<>();
-         readDictionary();
-        // dictionary.add("ulmic");
-        // dictionary.add("assume");
-        // dictionary.add("sum");
-        // dictionary.add("museum");
-        // dictionary.add("laptop");
+        readDictionary();
     }
 
     private void readDictionary() {
         try {
             Scanner fileReader = new Scanner(new File("dictionary.txt"));
-            while (fileReader.hasNextLine()) 
+            while (fileReader.hasNextLine())
                 dictionary.add(fileReader.nextLine());
-    
+
             fileReader.close();
-            
-          } catch (FileNotFoundException e) {
+
+        } catch (FileNotFoundException e) {
             System.out.println("An error occurred trying to parse the dictionary.");
-          }
+        }
     }
 
     protected ArrayList<String> getDictionaryArrayList() {
         return dictionary;
-    } 
+    }
 }

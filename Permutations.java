@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Permutations extends Dictionary {
 
@@ -14,12 +15,6 @@ public class Permutations extends Dictionary {
         possibleWords = new ArrayList<>();
     }
 
-    public ArrayList<String> getPermutations() {
-        filterDictionary();
-        ArrayList<String> permutations = new ArrayList<>();
-
-        return permutations;
-    }
 
     public void setPossibleLetters(String possibleLettersString) {
         inputtedLetters = possibleLettersString;
@@ -28,7 +23,22 @@ public class Permutations extends Dictionary {
         }
     }
 
-    public void filterDictionary() {
+    public ArrayList<String> getPermutations() {
+        ArrayList<String> words = filterDictionary();
+        Collections.sort(words);
+        return words;
+    }
+
+    public void printPermutations() {
+        System.out.println("Possible words: ");
+        for (String word : getPermutations()) {
+            System.out.println(word);
+        }
+
+        System.out.println("The longest word found was: " + getLongestFoundWord(getPermutations()));
+    }
+
+    public ArrayList<String> filterDictionary() {
         boolean skip = false;
 
         for (int dicLine = 0; dicLine < dictionary.size(); dicLine++) {
@@ -57,14 +67,25 @@ public class Permutations extends Dictionary {
                 }
 
             }
-            if (!skip)
+            if (!skip) {
                 possibleWords.add(dictionary.get(dicLine));
+            }
             skip = false;
         }
 
-        System.out.println(possibleWords);
+        return possibleWords;
     }
 
+    public String getLongestFoundWord(ArrayList<String> words) {
+        String longestWord = "";
 
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
+        }
+
+        return longestWord;
+    }
 
 }
