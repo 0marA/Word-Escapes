@@ -31,8 +31,28 @@ public class Permutations extends Dictionary {
 
     public void printPermutations() {
         System.out.println("Possible words: ");
+        System.out.println("| 3 LETTERS |");
         for (String word : getPermutations()) {
-            System.out.println(word);
+            if (word.length() == 3)
+                System.out.println("   " + word);
+        }
+        System.out.println("| 4 LETTERS |");
+
+        for (String word : getPermutations()) {
+            if (word.length() == 4)
+                System.out.println("   " + word);
+        }
+        System.out.println("| 5 LETTERS |");
+
+        for (String word : getPermutations()) {
+            if (word.length() == 5)
+                System.out.println("   " + word);
+        }
+        System.out.println("| 6 LETTERS |");
+
+        for (String word : getPermutations()) {
+            if (word.length() == 6)
+                System.out.println("   " + word);
         }
 
         System.out.println("The longest word found was: " + getLongestFoundWord(getPermutations()));
